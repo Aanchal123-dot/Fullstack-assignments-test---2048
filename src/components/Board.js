@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import '../styles/App.css';
 
 export default function Board(props) {
     let [board, setBoard] = useState([])
     let GridSize = props.GridSize;
     let [score, setScore] = useState(0)
-
-    // we are making board of grid
     let blueBoard = [];
     for (let i = 0; i < GridSize; i++) {
         blueBoard.push([])
@@ -14,6 +11,7 @@ export default function Board(props) {
             blueBoard[i].push(0)
         }
     }
+
 
     const updateDOM = () => {
         let finalBoard = [];
@@ -30,20 +28,20 @@ export default function Board(props) {
 
 
 
-    // component did mount
+
     useEffect(() => {
 
 
-        let rand1 = (parseInt(Math.random() * 10)) % GridSize;
-        let rand2 = (parseInt(Math.random() * 10)) % GridSize;
-        while (blueBoard[rand1][rand2] !== 0) {
+        let a = (parseInt(Math.random() * 10)) % GridSize;
+        let b = (parseInt(Math.random() * 10)) % GridSize;
+        while (blueBoard[a][b] !== 0) {
 
-            rand1 = (parseInt(Math.random() * 10)) % GridSize;
-            rand2 = (parseInt(Math.random() * 10)) % GridSize;
+            a = (parseInt(Math.random() * 10)) % GridSize;
+            b = (parseInt(Math.random() * 10)) % GridSize;
         }
         let valv = (parseInt(Math.random() * 10)) > 8 ? 4 : 2;
 
-        blueBoard[rand1][rand2] = valv;
+        blueBoard[a][b] = valv;
 
         updateDOM();
 
@@ -150,4 +148,4 @@ export default function Board(props) {
             {'Score:- ' + score}
         </div>
     )
-} 
+}
